@@ -6,7 +6,7 @@
 /*   By: sbaghdad <sbaghdad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:45:57 by sbaghdad          #+#    #+#             */
-/*   Updated: 2024/11/03 11:13:59 by sbaghdad         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:00:35 by sbaghdad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ptr;
-	int		check;
+	size_t	check;
 
-	if (size == 0)
+	if (size == 0 || count == 0)
 	{
 		ptr = malloc(0);
 		if (ptr == NULL)
@@ -27,7 +27,7 @@ void	*ft_calloc(size_t count, size_t size)
 	check = count * size;
 	if (check / size != count)
 		return (NULL);
-	ptr = (malloc(count * size));
+	ptr = (malloc(check));
 	if (ptr == NULL)
 		return (NULL);
 	ft_bzero(ptr, count * size);

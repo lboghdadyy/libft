@@ -6,7 +6,7 @@
 /*   By: sbaghdad <sbaghdad@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 20:08:22 by sbaghdad          #+#    #+#             */
-/*   Updated: 2024/11/04 13:33:31 by sbaghdad         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:07:13 by sbaghdad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ static int	ft_check(char *str, char **s)
 	return (1);
 }
 
+static	size_t	index_it(int i, const char *str, char c)
+{
+	while (str[i] == c && str[i])
+		i++;
+	return (i);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**str;
@@ -61,14 +68,15 @@ char	**ft_split(char const *s, char c)
 	size_t	r;
 	size_t	j;
 
+	if (!s)
+		return (NULL);
 	str = (char **)(malloc(sizeof(char *) * (count_words(s, c) + 1)));
-	if (!s || !str)
+	if (!str)
 		return (free(str), NULL);
 	(1) && (i = 0, j = 0);
 	while (s[i])
 	{
-		while (s[i] == c && s[i])
-			i++;
+		i = index_it(i, s, c);
 		if (s[i] != c && s[i])
 		{
 			r = i;
